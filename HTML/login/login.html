@@ -23,8 +23,9 @@
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
+  firebase.database().ref().set('Hello Firebase!');
 </script>
-<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+
 </head>
 <body>
 	<h2>自製網頁實作-登入</h2>
