@@ -5,29 +5,34 @@
 	<meta charset="UTF-8">
 	<Title>Sakula053的自製網頁實作</title>
 	<style>
-		#day1{background-color: red; color: white;}
-		#day2_update1{background-color: orange; color: white;}
-		#day2_update2{background-color: yellow; color: black;}
-		#day3_update1{background-color: green; color: white;}
-		#upgrade20231230{background-color: blue; color: white;}
-		#upgrade20240304{background-color: blueviolet; color: white;}
-		#upgrade20240306{background-color: purple; color: white;}
-		#upgrade20240307{background-color: red; color: white;}
+		.div_top{line-height: 1.8em;}
+		.day1{background-color: red; color: white;}
+		.day2_update1{background-color: orange; color: white;}
+		.day2_update2{background-color: yellow; color: black;}
+		.day3_update1{background-color: green; color: white;}
+		.upgrade20231230{background-color: blue; color: white;}
+		.upgrade20240304{background-color: blueviolet; color: white;}
+		.upgrade20240306{background-color: purple; color: white;}
+		.upgrade20240307{color: black; border: medium double red;}
+		.upgrade20240311{color: black; border: medium double orange;}
 	</style>
 </head>
 <body>
 	<h1>Sakula053的自製網頁實作</h1>
 	<hr>
-	<a href="#day1" id="day1">第一天</a><br>
-	<a href="#day2_update1" id="day2_update1">第二天 第一個更新！</a><br>
-	<a href="#day2_update2" id="day2_update2">第二天 第二個更新！</a><br>
-	<a href="#day3_update1" id="day3_update1">第三天 第一個更新！</a><br>
-	<a href="#upgrade20231230" id="upgrade20231230">2023年12月30日 回顧更新!</a><br>
-	<a href="#upgrade20240304" id="upgrade20240304">2023年3月4日 回顧更新!</a><br>
-	<a href="#upgrade20240306" id="upgrade20240306">2023年3月6日 回顧更新!</a><br>
-	<a href="#upgrade20240307" id="upgrade20240307">2023年3月7日 回頭更新!</a>
+	<div class="div_top">
+	<a href="#day1" class="day1">第一天</a><br>
+	<a href="#day2_update1" class="day2_update1">第二天 第一個更新！</a><br>
+	<a href="#day2_update2" class="day2_update2">第二天 第二個更新！</a><br>
+	<a href="#day3_update1" class="day3_update1">第三天 第一個更新！</a><br>
+	<a href="#upgrade20231230" class="upgrade20231230">2023年12月30日 回顧更新!</a><br>
+	<a href="#upgrade20240304" class="upgrade20240304">2024年3月4日 回顧更新!</a><br>
+	<a href="#upgrade20240306" class="upgrade20240306">2024年3月6日 回顧更新!</a><br>
+	<a href="#upgrade20240307" class="upgrade20240307">2024年3月7日 回頭更新!</a><br>
+	<a href="#upgrade20240311" class="upgrade20240311">2024年3月11日 回頭更新!</a><br>
+	</div>
 	<hr>
-	<h2 id="day1">起始-第一天</h2>
+	<h2 id="day1" class="day1">起始-第一天</h2>
 	<p>
 		製作網頁的第一天，我創造了這個網頁。<br>
 		這網頁日後將承載我和它的點點滴滴！<br>
@@ -43,7 +48,7 @@
 	</p>
 	<h4><a href="#top">回首頁</a></h4>
 	<hr>
-	<h2 id="day2_update1">第二天 第一個更新！</h2>
+	<h2 id="day2_update1" class="day2_update1">第二天 第一個更新！</h2>
 	<p>
 		創作的第二天，我還在想主意…<br>
 		打這行的時間是早上七點，等公車的時間…<br>
@@ -56,7 +61,7 @@
 	</p>
 	<h4><a href="#top">回首頁</a></h4>
 	<hr>
-	<h2 id="day2_update2">第二天 第二個更新！</h2>
+	<h2 id="day2_update2" class="day2_update2">第二天 第二個更新！</h2>
 	<p>
 		我決定打造一個可以讓我知道有誰進來看過的表單式登入系統！<br>
 		這個系統能讓每個人擁有獨特的帳號ID，並且會由日誌表單儲存登入痕跡。<br>
@@ -68,7 +73,7 @@
 	你還沒有可存取的帳號嗎？<a href="login/register.html" target="_blank">點此</a>或網頁頂端註冊！<br>
 	<h4><a href="#top">回首頁</a></h4>
 	<hr>
-	<h2 id="day3_update1">第三天 第一個更新！</h2>
+	<h2 id="day3_update1" class="day3_update1">第三天 第一個更新！</h2>
 	<p>
 		表單式登入系統將更新成被動式登入系統！<br>
 		我們將完善註冊系統，當你註冊成功時，我們將會用「電子郵件」提醒你，所以請記得使用真正的電子郵件地址！<br>
@@ -77,7 +82,7 @@
 	</p>
 	<h4><a href="#top">回首頁</a></h4>
 	<hr>
-	<h2 id="upgrade20231230">2023年12月30日 回顧更新!</h2>
+	<h2 id="upgrade20231230" class="upgrade20231230">2023年12月30日 回顧更新!</h2>
 	<p>
 		更新日誌:<br>
 		<ol>
@@ -92,13 +97,13 @@
 	</p>
 	<h4><a href="#top">回首頁</a></h4>
 	<hr>
-	<h2 id="upgrade20240304">2024年3月4日 回顧更新!</h2>
+	<h2 id="upgrade20240304" class="upgrade20240304">2024年3月4日 回顧更新!</h2>
 	<p>
 	為了讓操作更加方便，我在每個章節結尾加入了回首頁標籤！<br>
 	</p>
 	<h4><a href="#top">回首頁</a></h4>
 	<hr>
-	<h2 id="upgrade20240306">2024年3月6日 回顧更新!</h2>
+	<h2 id="upgrade20240306" class="upgrade20240306">2024年3月6日 回顧更新!</h2>
 	<p>
 		在放學離開學校前，我重新把 CSS 顏色選擇指令重試了一遍，結果發現到我把 class 和 id 的用法給搞混了...<br>
 		所以我在修正和加入指令碼後，也對網頁做了一些簡單的優化！
@@ -115,9 +120,26 @@
 	</p>
 	<h4><a href="#top">回首頁</a></h4>
 	<hr>
-	<h2 id="upgrade20240307">2024年3月7日 回頭更新!</h2>
+	<h2 id="upgrade20240307" class="upgrade20240307">2024年3月7日 回頭更新!</h2>
 	<p>
 		決定廢除登入註冊系統！ 也決定取消ID個人化網頁來減少使用負擔！
+	</p>
+	<h4><a href="#top">回首頁</a></h4>
+	<hr>
+	<h2 id="upgrade20240311" class="upgrade20240311">2024年3月11日 回頭更新!</h2>
+	<p>
+		找到了新的方式可以代表著新的排序方式了，頭終於不用痛了！ :D
+		但又有更多的設定要調了... Q_Q
+	</p>
+	<h3>2024年3月11日 直播更新！</h3>
+	<p>
+		這裡有點無聊...<br>
+		所以我在這裡加了一隻可愛的彩虹貓，不錯吧？<br>
+		當然，不用擔心！它不是電腦病毒！ :D<br>
+		<video width="360" height="240" controls>
+		<source src="media/CyanCat.mp4" type="video/mp4">
+		你的手機不支援網頁上的影片
+		</video>
 	</p>
 	<h4><a href="#top">回首頁</a></h4>
 	<hr>
