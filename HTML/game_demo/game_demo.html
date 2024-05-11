@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakula053 的自製遊戲 Demo</title>
+    <style>
+        
+    </style>
+    <script>
+        var test1 = prompt("test", "0");
+        
+        document.write("text");
+        function write_something()
+        {
+            document.write("<!DOCTYPE html>"+ "<html lang='zh'>" + "<meta charset='UTF-8'>", "<meta name='viewport'" + " content='width=device-width," + 
+            " initial-scale=1.0'>" + "<title>Sakula053 的自製遊戲 Demo</title>" + "Hi");
+        }
+    </script>
+</head>
+<body>
+    
+    <button type="button" onclick="write_something();">測試</button>
+    <script>
+    const xhr = new XMLHttpRequest();
+xhr.open('GET', 'username.json', true);
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        const data = JSON.parse(xhr.responseText);
+        console.log(data.username);
+    }
+};
+xhr.send();
+    </script>
+</body>
+</html>
