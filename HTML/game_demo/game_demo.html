@@ -9,8 +9,7 @@
         
     </style>
     <script src="https://cdn.jsdelivr.net/gh/yaohaixiao/message.js/message.min.js">
-        var username = prompt("請輸入你想在這使用的使用者名稱。\nPlease enter the username you would like to use here.", "New_user");
-        document.write("text");
+        
         function write_data()
         {
             const fs = require('fs');
@@ -24,6 +23,11 @@
               }
             });
         }
+        
+    </script>
+    <script>
+        var username = prompt("請輸入你想在這使用的使用者名稱。\nPlease enter the username you would like to use here.", "New_user");
+        document.write("text");
         function write_website()
         {
             document.write("<!DOCTYPE html>"+ "<html lang='zh'>" + "<meta charset='UTF-8'>", "<meta name='viewport'" + " content='width=device-width," + 
@@ -33,7 +37,7 @@
 </head>
 <body>
     
-    <button type="button" onclick="write_something();">測試</button>
+    <button type="button" onclick="write_username();">測試</button>
     <script>
     const xhr = new XMLHttpRequest();
 xhr.open('GET', 'username.json', true);
