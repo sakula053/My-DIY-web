@@ -14,7 +14,16 @@
         document.write("text");
         function write_something()
         {
+            const fs = require('fs');
             const newData = { username: username };
+            const jsonData = JSON.stringify(newData);
+            fs.writeFile('username.json', jsonData, (err) => {
+              if (err) {
+                console.error('寫入檔案時發生錯誤：', err);
+              } else {
+                console.log('資料已成功寫入 username.json 檔案');
+              }
+            });
             document.write("<!DOCTYPE html>"+ "<html lang='zh'>" + "<meta charset='UTF-8'>", "<meta name='viewport'" + " content='width=device-width," + 
             " initial-scale=1.0'>" + "<title>Sakula053 的自製遊戲 Demo</title>" + "Hi");
         }
