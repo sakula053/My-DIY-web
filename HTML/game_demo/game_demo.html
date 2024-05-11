@@ -8,11 +8,9 @@
     <style>
         
     </style>
-    <script>
-        var username = prompt("請輸入你想在這使用的使用者名稱。\nPlease enter the username you would like to use here.", "New_user");
-        
-        document.write("text");
-        function write_something()
+    <script src="messages.js">
+
+        function write_data()
         {
             const fs = require('fs');
             const newData = { username: username };
@@ -24,6 +22,13 @@
                 console.log('資料已成功寫入 username.json 檔案');
               }
             });
+        }
+    </script>
+    <script>
+        var username = prompt("請輸入你想在這使用的使用者名稱。\nPlease enter the username you would like to use here.", "New_user");
+        document.write("text");
+        function write_website()
+        {
             document.write("<!DOCTYPE html>"+ "<html lang='zh'>" + "<meta charset='UTF-8'>", "<meta name='viewport'" + " content='width=device-width," + 
             " initial-scale=1.0'>" + "<title>Sakula053 的自製遊戲 Demo</title>" + "Hi");
         }
