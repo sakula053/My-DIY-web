@@ -22,6 +22,7 @@
                 console.log('資料已成功寫入 username.json 檔案');
               }
             });
+            write_website();
         }
         
     </script>
@@ -37,7 +38,7 @@
 </head>
 <body>
     
-    <button type="button" onclick="write_username();">測試</button>
+    <button type="button" onclick="write_data();">測試</button>
     <script>
     const xhr = new XMLHttpRequest();
 xhr.open('GET', 'username.json', true);
