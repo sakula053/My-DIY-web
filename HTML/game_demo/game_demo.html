@@ -9,11 +9,12 @@
         
     </style>
     <script>
-        var test1 = prompt("test", "0");
+        var username = prompt("請輸入你想在這使用的使用者名稱。/n Please enter the username you would like to use here.", "New_user");
         
         document.write("text");
         function write_something()
         {
+            const newData = { username: username };
             document.write("<!DOCTYPE html>"+ "<html lang='zh'>" + "<meta charset='UTF-8'>", "<meta name='viewport'" + " content='width=device-width," + 
             " initial-scale=1.0'>" + "<title>Sakula053 的自製遊戲 Demo</title>" + "Hi");
         }
