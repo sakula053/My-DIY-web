@@ -10,6 +10,15 @@
     </style>
     <script>
         var username = prompt("請輸入你想在這使用的使用者名稱。\nPlease enter the username you would like to use here.", "New_user");
+        // 創建一個新的 Web Worker
+        const worker = new Worker('worker.js');
+
+        // 監聽來自 Web Worker 的消息
+        worker.onmessage = function(event) {
+        const timerDisplay = document.getElementById('timer');
+        timerDisplay.textContent = '計時器: ' + event.data + ' 秒';
+        };
+
         // 初始化階段數
         var currentStage = 0;
 
@@ -31,6 +40,8 @@
                 headings.forEach(function(heading) {
                 heading.style.color = "white";
                 });
+                // 啟動 Web Worker 計時器
+                worker.postMessage('start');
                 
                 var newContent = document.createElement('h4');
                 newContent.textContent = "checking... \nusername:" + username + " ... OK.\n";
@@ -63,6 +74,8 @@
                 }, 10000);
             } else if (currentStage === 2) {
                 console.log("進入階段 2，執行階段 2 的操作");
+                 // 停止 Web Worker 計時器
+                worker.terminate();
                 var username = localStorage.getItem('username');
                 var newContent = "<h3>Welcome to MY-DIY-WEB-GAME Demo! " + username + "!\nThank you for your willingness to try this game demo! \nHowever, the first phase of this game demo has not been completed yet." + 
                     " \nI am really sorry if it causes any disappointment. \nI will try my best to complete the first part as quickly as possible! </h3>" + "<h2>Stay tuned!</h2>" + 
@@ -72,6 +85,8 @@
                 document.body.innerHTML = newContent;
             } else if (currentStage === 3) {
                 console.log("進入階段 3，執行階段 3 的操作");
+                // 在第三階段需要重新啟動 Web Worker 計時器
+                worker.postMessage('start');
             }
             // 在這裡執行與遊戲進度相關的動作，例如更新遊戲畫面或處理遊戲邏輯等
         }
