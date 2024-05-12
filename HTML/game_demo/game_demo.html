@@ -26,21 +26,6 @@
             var newContent = "<h4>Hi, " + username + "</h4>";
             document.body.innerHTML = newContent;
         }
-    </script>
-</head>
-<body>
-    <br>
-    <br>
-    <button type="button" style="font-size: xx-large;" onclick="write_data();">點我開始遊戲</button>
-    <br>
-    <br>
-    <button type="button" onclick="save_game();">儲存遊戲</button>
-    <br>
-    <input type="file" id="file-input" style="display: none;" onchange="handleFile()">
-    <br>
-    <br>
-    <button onclick="chooseFile()">回復遊戲存檔</button>
-    <script>
         function save_game() {
             var gameData = {
                 // 這裡是你的遊戲數據
@@ -95,6 +80,18 @@
             }
         }
     </script>
-    </script>
+</head>
+<body>
+    <br>
+    <br>
+    <button type="button" style="font-size: xx-large;" onclick="write_data();">點我開始遊戲</button>
+    <br>
+    <br>
+    <button type="button" onclick="save_game();">儲存遊戲</button>
+    <br>
+    <input type="file" id="file-input" style="display: none;" onchange="handleFile()">
+    <br>
+    <br>
+    <button onclick="chooseFile()">回復遊戲存檔</button>
 </body>
 </html>
