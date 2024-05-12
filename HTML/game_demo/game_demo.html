@@ -31,15 +31,23 @@
             // 根據不同的階段執行不同的操作
             if (currentStage === 1) {
                 console.log("進入階段 1，執行階段 1 的操作");
-                var username = localStorage.getItem('username');
                 // 清除現有元素
                 document.body.innerHTML = '';
+                var username = localStorage.getItem('username');
                 document.body.style.backgroundColor = "black"; // 將背景色設置為黑色
+                // 創建一個新的 <div> 元素作為父元素
+                var parentElement = document.createElement('div');
                 // 將所有 <h4>、<h3> 和 <h2> 標籤中的文字顏色設置為白色
-                var headings = document.querySelectorAll("h4, h3, h2");
+                const headings = document.querySelectorAll("h4, h3, h2");
                 headings.forEach(function(heading) {
                 heading.style.color = "white";
+                // 將每個標題添加到父元素中
+                parentElement.appendChild(heading);
                 });
+                
+                // 將父元素添加到 body 中
+                document.body.appendChild(parentElement);
+                
                 // 啟動 Web Worker 計時器
                 worker.postMessage('start');
                 
