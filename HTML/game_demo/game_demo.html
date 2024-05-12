@@ -10,26 +10,65 @@
     </style>
     <script>
         var username = prompt("請輸入你想在這使用的使用者名稱。\nPlease enter the username you would like to use here.", "New_user");
+        // 初始化階段數
+        var currentStage = 0;
+
+        // 點擊按鈕後增加階段數並執行相應動作
+        function increaseStage() {
+            // 增加階段數
+            currentStage++;
+            // 執行相應動作
+            console.log("Current stage:", currentStage);
+            // 根據不同的階段執行不同的操作
+            if (currentStage === 1) {
+                console.log("進入階段 1，執行階段 1 的操作");
+                var username = localStorage.getItem('username');
+                document.body.style.backgroundColor = "black"; // 將背景色設置為黑色
+                document.body.style.Color = "White"; // 將背景色設置為黑色
+                var newContent = "<h4>checking... \nusername:" + username + " ... OK.\n" + "</h4>";
+                document.body.innerHTML = newContent;
+                setTimeout(function() {
+                    var existingContent = document.body.innerHTML; // 獲取現有的 HTML 內容
+                    var newContent = "<h4>Stage: " + currentStage + " ... correct.\n</h4>";
+                    document.body.innerHTML = existingContent + newContent; // 將現有內容和新的內容結合後再設置為 HTML 內容
+                }, 1000);
+                setTimeout(function() {
+                    var existingContent = document.body.innerHTML; // 獲取現有的 HTML 內容
+                    var newContent = "<h4>Trying boot to game`s bootmgr.js... please wait for few second...\n</h4>";
+                    document.body.innerHTML = existingContent + newContent; // 將現有內容和新的內容結合後再設置為 HTML 內容
+                }, 5000);
+                setTimeout(function() {
+                    var existingContent = document.body.innerHTML; // 獲取現有的 HTML 內容
+                    var newContent = "<h4>bootmgr.js> booting...</h4>";
+                    document.body.innerHTML = existingContent + newContent; // 將現有內容和新的內容結合後再設置為 HTML 內容
+                }, 500);
+                save_game();
+                increaseStage();
+            } else if (currentStage === 2) {
+                console.log("進入階段 2，執行階段 2 的操作");
+                var username = localStorage.getItem('username');
+                var newContent = "<h3>Welcome to MY-DIY-WEB-GAME Demo! " + username + "!\nThank you for your willingness to try this game demo! \nHowever, the first phase of this game demo has not been completed yet." + 
+                    " \nI am really sorry if it causes any disappointment. \nI will try my best to complete the first part as quickly as possible! </h3>" + "<h2>Stay tuned!</h2>" + 
+                    "<h3>感謝你願意來嘗鮮這個遊戲demo！\n但是這個遊戲demo的第一階段還沒做完，\n如果造成失望也真的是非常抱歉，我會盡量以最快的速度做完第一部分！</h3><h2>敬請期待！</h2>" +
+                    "<br><br><button type='button' onclick='save_game();'>儲存遊戲</button>" + 
+                    "<br><input type='file' id='file-input' style='display: none;' onchange='handleFile()'><br><br><button onclick='chooseFile()'>回復遊戲存檔</button>";
+                document.body.innerHTML = newContent;
+            } else if (currentStage === 3) {
+                console.log("進入階段 3，執行階段 3 的操作");
+            }
+            // 在這裡執行與遊戲進度相關的動作，例如更新遊戲畫面或處理遊戲邏輯等
+        }
         document.write("<h4>Hi, I`m sakula053! Nice to meet ya!<br>You are " + username + ", I learned about it during the process of JavaScript loading prompt data into localStorage.<br>", 
                        "Don't worry, I just wanted to play games on a whim! Nothing strange should happen during the process, even though the game is only a demo version now...<br>"
                        + "<br>嗨！我是櫻花053！很高興認識你！你是 "+ username +" ，我是在 JavaScript 將 prompt 的資料載進 localStorage 的過程中得知的。<br>" +
-                      "你放心，我只是心血來潮想做遊戲來玩！應該過程不會發生什麼怪事，儘管遊戲現在只是 Demo 版本...</h4>");
-        function write_data()
-        {
-            localStorage.setItem('username', username);
-            console.log('資料已成功寫入 localStorage');
-            write_website();
-        }
-        function write_website()
-        {
-            var username = localStorage.getItem('username');
-            var newContent = "<h4>Hi, " + username + "</h4>";
-            document.body.innerHTML = newContent;
-        }
+                      "你放心，我只是心血來潮想做遊戲來玩！應該過程不會發生什麼怪事，儘管遊戲現在只是 Demo 版本...        當前版本 Beta 0.125 Demo</h4>");
+        localStorage.setItem('username', username);
+        console.log('資料已成功寫入 localStorage');
         function save_game() {
             var gameData = {
                 // 這裡是你的遊戲數據
-                username: username
+                username: username,
+                savedStage: currentStage
                 // 其他遊戲數據
             };
 
@@ -84,7 +123,7 @@
 <body>
     <br>
     <br>
-    <button type="button" style="font-size: xx-large;" onclick="write_data();">點我開始遊戲</button>
+    <button type="button" style="font-size: xx-large;" onclick="increaseStage();">點我開始遊戲</button>
     <br>
     <br>
     <button type="button" onclick="save_game();">儲存遊戲</button>
