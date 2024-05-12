@@ -23,33 +23,44 @@
             if (currentStage === 1) {
                 console.log("進入階段 1，執行階段 1 的操作");
                 var username = localStorage.getItem('username');
+                // 清除現有元素
+                document.body.innerHTML = '';
                 document.body.style.backgroundColor = "black"; // 將背景色設置為黑色
                 // 將所有 <h4>、<h3> 和 <h2> 標籤中的文字顏色設置為白色
                 var headings = document.querySelectorAll("h4, h3, h2");
                 headings.forEach(function(heading) {
                 heading.style.color = "white";
                 });
-                var newContent = "<h4>checking... \nusername:" + username + " ... OK.\n" + "</h4>";
-                document.body.innerHTML = newContent;
+                
+                var newContent = document.createElement('h4');
+                newContent.textContent = "checking... \nusername:" + username + " ... OK.\n";
+                document.body.appendChild(newContent);
+
                 setTimeout(function() {
-                    var existingContent = document.body.innerHTML; // 獲取現有的 HTML 內容
-                    var newContent = "<h4>Stage: " + currentStage + " ... correct.\n</h4>";
-                    document.body.innerHTML = existingContent + newContent; // 將現有內容和新的內容結合後再設置為 HTML 內容
+                    var stageContent = document.createElement('h4');
+                    stageContent.textContent = "Stage: " + currentStage + " ... correct.\n";
+                    document.body.appendChild(stageContent);
                 }, 1000);
+
                 setTimeout(function() {
-                    var existingContent = document.body.innerHTML; // 獲取現有的 HTML 內容
-                    var newContent = "<h4>Trying boot to game`s bootmgr.js... please wait for few second...\n</h4>";
-                    document.body.innerHTML = existingContent + newContent; // 將現有內容和新的內容結合後再設置為 HTML 內容
+                    var bootContent = document.createElement('h4');
+                    bootContent.textContent = "Trying boot to game`s bootmgr.js... please wait for few second...\n";
+                    document.body.appendChild(bootContent);
                 }, 5000);
+
                 setTimeout(function() {
-                    var existingContent = document.body.innerHTML; // 獲取現有的 HTML 內容
-                    var newContent = "<h4>bootmgr.js> booting...</h4>";
-                    document.body.innerHTML = existingContent + newContent; // 將現有內容和新的內容結合後再設置為 HTML 內容
+                    var bootingContent = document.createElement('h4');
+                    bootingContent.textContent = "bootmgr.js> booting... Please wait ten seconds...\n";
+                    document.body.appendChild(bootingContent);
                 }, 500);
+
                 setTimeout(function() {
                     save_game();
-                    increaseStage();
                 }, 500);
+
+                setTimeout(function() {
+                    increaseStage();
+                }, 10000);
             } else if (currentStage === 2) {
                 console.log("進入階段 2，執行階段 2 的操作");
                 var username = localStorage.getItem('username');
