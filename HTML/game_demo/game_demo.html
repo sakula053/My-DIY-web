@@ -35,6 +35,9 @@
     <br>
     <br>
     <button type="button" onclick="save_game();">儲存遊戲</button>
+    <br>
+    <input type="file" id="file-input" style="display: none;" onchange="handleFile()">
+    <button onclick="chooseFile()">選擇遊戲數據文件</button>
     <script>
         function save_game() {
             var gameData = {
@@ -64,6 +67,32 @@
                 console.log('遊戲進度已保存，但未下載遊戲進度文件');
             }
         }
+        function chooseFile() {
+            var fileInput = document.getElementById('file-input');
+            fileInput.click(); // 點擊文件輸入元素，觸發選擇文件操作
+        }
+
+        function handleFile() {
+            var fileInput = document.getElementById('file-input');
+            var file = fileInput.files[0];
+
+            if (file) {
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    var jsonData = event.target.result;
+                    var gameData = JSON.parse(jsonData);
+                    // 現在你可以使用這些遊戲數據來恢復遊戲
+                    // 例如，設置遊戲中的變量或者更新遊戲界面等
+                    console.log('成功恢復遊戲數據:', gameData);
+                };
+
+                reader.readAsText(file);
+            } else {
+                console.log('請選擇一個文件');
+            }
+        }
+    </script>
     </script>
 </body>
 </html>
