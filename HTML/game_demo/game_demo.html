@@ -23,8 +23,8 @@
         function write_website()
         {
             var username = localStorage.getItem('username');
-            document.write("<!DOCTYPE html>"+ "<html lang='zh'>" + "<meta charset='UTF-8'>", "<meta name='viewport'" + " content='width=device-width," + 
-            " initial-scale=1.0'>" + "<title>Sakula053 的自製遊戲 Demo</title>" + "Hi, " + username);
+            var newContent = "<h4>Hi, " + username + "</h4>";
+            document.body.innerHTML = newContent;
         }
     </script>
 </head>
@@ -32,8 +32,38 @@
     <br>
     <br>
     <button type="button" onclick="write_data();">測試</button>
+    <br>
+    <br>
+    <button type="button" onclick="save_game();">儲存遊戲</button>
     <script>
-        
+        function save_game() {
+            var gameData = {
+                // 這裡是你的遊戲數據
+                username: username
+                // 其他遊戲數據
+            };
+
+            var jsonData = JSON.stringify(gameData);
+
+            // 顯示確認對話框，詢問玩家是否要下載遊戲進度文件
+            var confirmDownload = confirm('遊戲進度已保存。是否要下載遊戲進度文件？');
+            if (confirmDownload) {
+                // 保存遊戲數據
+                // 這裡放置保存遊戲數據的動作，例如保存到 localStorage 或者其他地方
+
+                // 下載遊戲進度文件
+                var blob = new Blob([jsonData], { type: "application/json" });
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = 'gameData.json';
+                a.click();
+                URL.revokeObjectURL(url);
+                console.log('遊戲進度已成功儲存到 JSON 文件');
+            } else {
+                console.log('遊戲進度已保存，但未下載遊戲進度文件');
+            }
+        }
     </script>
 </body>
 </html>
