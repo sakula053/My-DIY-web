@@ -24,7 +24,9 @@
                 console.log("進入階段 1，執行階段 1 的操作");
                 var username = localStorage.getItem('username');
                 document.body.style.backgroundColor = "black"; // 將背景色設置為黑色
-                document.body.style.Color = "White"; // 將背景色設置為黑色
+                document.h4.style.Color = "White"; // 將背景色設置為黑色
+                document.h3.style.Color = "White"; // 將背景色設置為黑色
+                document.h2.style.Color = "White"; // 將背景色設置為黑色
                 var newContent = "<h4>checking... \nusername:" + username + " ... OK.\n" + "</h4>";
                 document.body.innerHTML = newContent;
                 setTimeout(function() {
@@ -42,8 +44,10 @@
                     var newContent = "<h4>bootmgr.js> booting...</h4>";
                     document.body.innerHTML = existingContent + newContent; // 將現有內容和新的內容結合後再設置為 HTML 內容
                 }, 500);
-                save_game();
-                increaseStage();
+                setTimeout(function() {
+                    save_game();
+                    increaseStage();
+                }, 500);
             } else if (currentStage === 2) {
                 console.log("進入階段 2，執行階段 2 的操作");
                 var username = localStorage.getItem('username');
