@@ -3,17 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="media/favicon.ico">
-    <title>新版Sakula053網頁空間</title>
+    <link rel="shortcut icon" href="/HTML/media/favicon.ico">
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body>
     <div data-role="page" id="page">
-        <div data-role="header" data-position="fixed"><h1>新版網頁空間</h1></div>
+        <div data-role="header"><h4>Sakula053新網頁</h4></div>
         <div data-role="content">
             <a href="#message_welcome1" data-role="button">目錄首頁(不知道用處的請先按我)</a>
+            <hr>
+            <ul data-filter="true" data-inset="true" data-role="listview">
+                <li><a href="#page_day1">第一天！</a></li>
+                <li><a href="#page_day2_1">第二天 第一個更新！</a></li>
+                <li><a href="#page_day2_2">第二天 第二個更新！</a></li>
+                <li><a href="#page_day3">第三天！</a></li>
+                <li><a href="#page_20231230">2023年12月30日 回顧更新！</a></li>
+                <li><a href="#page_20240304">2024年3月4日 回顧更新！</a></li>
+                <li><a href="#page_20240306">2024年3月6日 回顧更新！</a></li>
+                <li><a href="#page_20240307">2024年3月7日 回顧更新！</a></li>
+                <li><a href="#page_20240311">2024年3月11日 回顧更新！</a></li>
+                <li><a href="#page_20240406">2024年4月6日 回顧更新！</a></li>
+                <li><a href="#page_20240428">2024年4月28日 直播預備更新！</a></li>
+                <li><a href="#page_20250106">2025年1月6日 網頁大更新！</a></li>
+            </ul>
+        </div>
+        <div data-role="footer" data-position="fixed"><h1>Powered By jQuery mobile.</h1></div>
+    </div>
+    <div data-role="page" id="page_day1">
+        <div data-role="header" data-position="fixed" data-add-back-btn="true" data-back-btn-text="回到目錄"><h1>第一天！</h1></div>
+        <div data-role="content">
+            <p>
+                製作網頁的第一天，我創造了這個網頁。<br>
+                這網頁日後將承載我和它的點點滴滴！<br>
+                <br>
+                這是我在創建時往這裡丟的第一部影片！<br>
+                Windows RedZone！<br>
+                影片出處:<a href="https://www.youtube.com/watch?v=5BZLz21ZS_Y" target="_blank">https://www.youtube.com/watch?v=5BZLz21ZS_Y</a>
+            </p>
+            <a href="#video1" data-role="button">影片播放</a>
+        </div>
+        <div data-role="footer" data-position="fixed"><h1>Powered By jQuery mobile.</h1></div>
+    </div>
+    <div data-role="page" id="page_day2_1">
+        <div data-role="header" data-position="fixed"><h1>新版網頁空間</h1></div>
+        <div data-role="content">
         </div>
         <div data-role="footer" data-position="fixed"><h1>Powered By jQuery mobile.</h1></div>
     </div>
@@ -44,6 +79,15 @@
                 這裡就不多做說明了，你們自己慢慢探索，我先走了。（對話結束）
             </p>
             <a href="#page" data-role="button">OK</a>
+    </div>
+    <div data-role="dialog" id="video1">
+        <div data-role="header"><h1>影片播放視窗</h1></div>
+        <div data-role="content">
+            <video width="360" height="240" controls>
+            <source src="/HTML/media/redzone.mp4" type="video/mp4">
+            你的手機不支援網頁上的影片
+            </video>
+        </div>
     </div>
 </body>
 </html>
