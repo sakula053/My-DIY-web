@@ -10,7 +10,10 @@
 </head>
 <body>
     <div data-role="page" id="page">
-        <div data-role="header"><h4>Sakula053新網頁</h4></div>
+        <div data-role="header">
+            <h4>Sakula053新網頁</h4>
+            <a href="#is_empty_error" data-role="button" class="ui-btn-right">空網頁？</a>
+        </div>
         <div data-role="content">
             <a href="#message_welcome1" data-role="button">目錄首頁(不知道用處的請先按我)</a>
             <hr>
@@ -32,7 +35,10 @@
         <div data-role="footer" data-position="fixed"><h1>Powered By jQuery mobile.</h1></div>
     </div>
     <div data-role="page" id="page_day1">
-        <div data-role="header" data-position="fixed" data-add-back-btn="true" data-back-btn-text="回到目錄"><h1>第一天！</h1></div>
+        <div data-role="header" data-add-back-btn="true" data-back-btn-text="回到目錄">
+            <h1>第一天！</h1>
+            <a href="#is_empty_error" data-role="button" class="ui-btn-right">空網頁？</a>
+        </div>
         <div data-role="content">
             <p>
                 製作網頁的第一天，我創造了這個網頁。<br>
@@ -47,7 +53,10 @@
         <div data-role="footer" data-position="fixed"><h1>Powered By jQuery mobile.</h1></div>
     </div>
     <div data-role="page" id="page_day2_1">
-        <div data-role="header" data-position="fixed"><h1>新版網頁空間</h1></div>
+        <div data-role="header" data-position="fixed">
+            <h1>新版網頁空間</h1>
+            <a href="#is_empty_error" data-role="button" class="ui-btn-right">空網頁？</a>
+        </div>
         <div data-role="content">
         </div>
         <div data-role="footer" data-position="fixed"><h1>Powered By jQuery mobile.</h1></div>
@@ -88,6 +97,17 @@
             <source src="/My-DIY-web/HTML/media/redzone.mp4" type="video/mp4">
             你的手機不支援網頁上的影片
             </video>
+        </div>
+    </div>
+    <div data-role="dialog" id="is_empty_error">
+        <div data-role="header"><h1>瀏覽時遇到問題了？</h1></div>
+        <div data-role="content">
+            <p>
+                你發現網頁是空的且沒有"回到目錄"的按鈕？<br>
+                那你進入的這個頁面作者可能還沒製作完成！<br>
+                我會用回到目錄的方式讓你回到你進入空網頁前，祝你能成功回到目錄！
+            </p>
+            <a href="#page" data-role="button">OK</a>
         </div>
     </div>
 </body>
