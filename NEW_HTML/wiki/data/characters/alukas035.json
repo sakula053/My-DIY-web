@@ -1,0 +1,82 @@
+{
+    "id":"alukas035",
+
+    "name":"Alukas035",
+
+    "subtitle":"035",
+
+    "themeColor":"#29a3c6",
+
+    "image":"images/alukas035.png",
+
+    "status":"Active",
+
+    "statusDescription":
+    "OTL時期主要人格之一，後期成為NTL重要存在。",
+
+    "stats":[
+
+        {
+            "name":"HP",
+            "label":"生命值",
+            "type":"value",
+            "value":1000
+        },
+
+        {
+            "name":"ATK",
+            "label":"攻擊力",
+            "type":"value",
+            "value":150
+        },
+
+        {
+            "name":"DEF",
+            "label":"防禦力",
+            "type":"value",
+            "value":200
+        },
+
+        {
+            "name":"AUTH",
+            "label":"權限等級",
+            "type":"level",
+            "value":4
+        }
+    ],
+
+    "timelines":[
+
+        "OTL",
+        "NTL"
+
+    ],
+
+    "related":[
+
+        {
+            "id":"sakula053",
+            "name":"Sakula053"
+        }
+
+    ],
+
+    "sections":[
+
+        {
+            "title":"概要",
+
+            "content":
+            "原本負責人格負載與管理，後期創造並協助Sakula053誕生。"
+        },
+
+
+        {
+            "title":"歷史",
+
+            "content":
+            "於OTL時期存在，後續延伸至NTL。"
+        }
+
+    ]
+}

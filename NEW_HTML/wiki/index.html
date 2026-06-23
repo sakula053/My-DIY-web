@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>世界檔案存放網頁空間</title>
+
+<style>
+
+:root{
+
+    --bg:#f5f5f5;
+    --year-width:120px;
+
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+
+    margin:0;
+    background:var(--bg);
+
+    font-family:
+    "Segoe UI",
+    sans-serif;
+
+    overflow:auto;
+
+}
+
+#timeline{
+
+    position:relative;
+
+    min-width:1280px;
+
+}
+
+/* =====================
+   年份
+===================== */
+
+.year-label{
+
+    position:absolute;
+
+    left:20px;
+
+    width:80px;
+
+    text-align:right;
+
+    font-weight:600;
+
+    color:#666;
+
+}
+
+.year-line{
+
+    position:absolute;
+
+    left:100px;
+
+    height:2px;
+
+    background:#d0d0d0;
+
+}
+
+/* =====================
+   柱
+===================== */
+
+.column{
+
+    position:absolute;
+
+    width:22px;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    transition:
+    transform .15s ease,
+    box-shadow .15s ease;
+
+}
+
+.column:hover{
+
+    transform:scaleX(1.15);
+
+    box-shadow:
+    0 0 12px rgba(0,0,0,.2);
+
+}
+
+/* =====================
+   Tooltip
+===================== */
+
+#tooltip{
+
+    position:fixed;
+
+    display:none;
+
+    min-width:220px;
+
+    max-width:320px;
+
+    background:white;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.18);
+
+    z-index:9999;
+
+    pointer-events:none;
+
+}
+
+#tooltip h3{
+
+    margin:0 0 6px;
+
+    font-size:16px;
+
+}
+
+#tooltip p{
+
+    margin:0;
+
+    color:#666;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+}
+
+/* =====================
+   標題
+===================== */
+
+.header{
+
+    position:sticky;
+
+    top:0;
+
+    background:#ffffffdd;
+
+    backdrop-filter:blur(10px);
+
+    padding:12px 20px;
+
+    border-bottom:
+    1px solid #ddd;
+
+    z-index:100;
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+    世界檔案存放網頁空間
+    <h5>該處介面由ChatGPT產出。(其餘Wiki介面尚在製作中，可能會顯示404錯誤。)</h5>
+</div>
+
+<div id="timeline"></div>
+
+<div id="tooltip"></div>
+
+<script>
+
+const timeline =
+document.getElementById("timeline");
+
+const tooltip =
+document.getElementById("tooltip");
+
+/* =====================
+   載入 JSON
+===================== */
+
+fetch("./timeline.json")
+.then(r => r.json())
+.then(data => {
+
+    renderTimeline(data);
+
+});
+
+/* =====================
+   主渲染
+===================== */
+
+function renderTimeline(data){
+
+    const settings =
+    data.settings;
+
+    const startYear =
+    settings.startYear;
+
+    const endYear =
+    settings.endYear;
+
+    const yearHeight =
+    settings.yearHeight;
+
+    const timelineStartX =
+    settings.timelineStartX ?? 180;
+
+    const characterStartX =
+    settings.characterStartX ?? 420;
+
+    const spacing =
+    settings.columnSpacing ?? 100;
+
+    const totalYears =
+    endYear - startYear + 1;
+
+    timeline.style.height =
+    (totalYears * yearHeight + 100)
+    + "px";
+
+    /* =====================
+       年份軸
+    ===================== */
+
+    for(
+        let year=startYear;
+        year<=endYear;
+        year++
+    ){
+
+        const y =
+        getY(year,startYear,yearHeight);
+
+        const label =
+        document.createElement("div");
+
+        label.className =
+        "year-label";
+
+        label.innerText =
+        year;
+
+        label.style.top =
+        y + "px";
+
+        timeline.appendChild(label);
+
+        const line =
+        document.createElement("div");
+
+        line.className =
+        "year-line";
+
+        line.style.top =
+        (y+18) + "px";
+
+        line.style.width =
+        "3000px";
+
+        timeline.appendChild(line);
+
+    }
+
+    /* =====================
+       世界線
+    ===================== */
+
+    data.timelines.forEach(
+        (item,index)=>{
+
+        createBar({
+
+            x:
+            timelineStartX +
+            index*50,
+
+            name:
+            item.name,
+
+            start:
+            item.start,
+
+            end:
+            item.end,
+
+            description:
+            item.description,
+
+            wiki:
+            item.wiki,
+
+            colors:[
+                item.color
+            ],
+
+            startYear,
+            yearHeight
+
+        });
+
+    });
+
+    /* =====================
+       角色
+    ===================== */
+
+    data.characters.forEach(
+        (char,index)=>{
+
+        const colors=[];
+
+        char.segments.forEach(
+            seg=>{
+
+            colors.push({
+                start:seg.start,
+                end:seg.end,
+                color:seg.color
+            });
+
+        });
+
+        createBar({
+
+            x:
+            characterStartX +
+            index*spacing,
+
+            name:
+            char.name,
+
+            start:
+            char.segments[0].start,
+
+            end:
+            char.segments[
+                char.segments.length-1
+            ].end,
+
+            description:
+            char.description ??
+            "",
+
+            wiki:
+            char.wiki,
+
+            colors,
+
+            startYear,
+            yearHeight
+
+        });
+
+    });
+
+}
+
+/* =====================
+   建立色帶
+===================== */
+
+function createBar(cfg){
+
+    const bar =
+    document.createElement("div");
+
+    bar.className =
+    "column";
+
+    const top =
+    getY(
+        cfg.start,
+        cfg.startYear,
+        cfg.yearHeight
+    );
+
+    const bottom =
+    getY(
+        cfg.end,
+        cfg.startYear,
+        cfg.yearHeight
+    );
+
+    bar.style.left =
+    cfg.x + "px";
+
+    bar.style.top =
+    top + "px";
+
+    bar.style.height =
+    (bottom-top) + "px";
+
+    if(cfg.colors.length===1){
+
+        bar.style.background =
+        cfg.colors[0].color ??
+        cfg.colors[0];
+
+    }else{
+
+        const total =
+        cfg.end - cfg.start;
+
+        const parts=[];
+
+        cfg.colors.forEach(
+            segment=>{
+
+            const s =
+            ((segment.start-cfg.start)
+            /total)*100;
+
+            const e =
+            ((segment.end-cfg.start)
+            /total)*100;
+
+            parts.push(
+            `${segment.color} ${s}%`);
+
+            parts.push(
+            `${segment.color} ${e}%`);
+
+        });
+
+        bar.style.background =
+        `linear-gradient(
+        to bottom,
+        ${parts.join(",")}
+        )`;
+
+    }
+
+    /* Hover */
+
+    bar.addEventListener(
+    "mousemove",
+    e=>{
+
+        tooltip.style.display =
+        "block";
+
+        tooltip.style.left =
+        (e.clientX+20)+"px";
+
+        tooltip.style.top =
+        (e.clientY+20)+"px";
+
+        tooltip.innerHTML =
+        `
+        <h3>${cfg.name}</h3>
+        <p>${cfg.description}</p>
+        `;
+
+    });
+
+    bar.addEventListener(
+    "mouseleave",
+    ()=>{
+
+        tooltip.style.display =
+        "none";
+
+    });
+
+    /* Click */
+
+    if(cfg.wiki){
+
+        bar.addEventListener(
+        "click",
+        ()=>{
+
+            location.href =
+            cfg.wiki;
+
+        });
+
+    }
+
+    timeline.appendChild(bar);
+
+}
+
+/* =====================
+   年份換算
+===================== */
+
+function getY(
+    year,
+    startYear,
+    yearHeight
+){
+
+    return 80 +
+    ((year-startYear)
+    *yearHeight);
+
+}
+
+</script>
+
+</body>
+</html>

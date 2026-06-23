@@ -1,0 +1,73 @@
+{
+    "id": "owner",
+
+    "name": "The Owner",
+
+    "subtitle": "擁有者",
+
+    "themeColor": "#5f5f5f",
+
+    "image": "images/owner.png",
+
+    "status": "已消失",
+
+    "statusDescription": "於系統崩潰事件後失去活動紀錄。",
+
+    "stats": [
+
+        {
+            "name": "HP",
+            "label": "生命值",
+            "type": "value",
+            "value": 2000
+        },
+
+        {
+            "name": "ATK",
+            "label": "攻擊力",
+            "type": "value",
+            "value": 400
+        },
+
+        {
+            "name": "DEF",
+            "label": "防禦力",
+            "type": "value",
+            "value": 650
+        },
+
+        {
+            "name": "AUTH",
+            "label": "權限等級",
+            "type": "level",
+            "value": 5
+        }
+    ],
+
+    "timelines": [
+        "The Dream"
+    ],
+
+    "related": [
+
+        {
+            "id": "alukas035",
+            "name": "Entity053"
+        }
+
+    ],
+
+    "sections": [
+
+        {
+            "title": "概要",
+            "content": "最早期存在的角色之一。"
+        },
+
+        {
+            "title": "歷史",
+            "content": "在系統大崩潰期間疑似遭到抹除。"
+        }
+
+    ]
+}

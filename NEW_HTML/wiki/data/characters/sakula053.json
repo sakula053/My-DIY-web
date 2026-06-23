@@ -1,0 +1,65 @@
+{
+    "id":"sakula053",
+
+    "name":"Sakula053",
+
+    "subtitle":"053",
+
+    "themeColor":"#e85d75",
+
+    "image":"images/sakula053.png",
+
+    "status":"Active",
+
+    "statusDescription":"NTL主要角色。",
+
+    "stats":[
+
+        {
+            "name":"HP",
+            "label":"生命值",
+            "type":"value",
+            "value":1000
+        },
+
+        {
+            "name":"ATK",
+            "label":"攻擊力",
+            "type":"value",
+            "value":100
+        },
+
+        {
+            "name":"DEF",
+            "label":"防禦力",
+            "type":"value",
+            "value":200
+        },
+
+        {
+            "name":"AUTH",
+            "label":"權限等級",
+            "type":"level",
+            "value":4
+        }
+
+    ],
+
+    "timelines":[
+        "NTL"
+    ],
+
+    "related":[
+        {
+            "id":"alukas035",
+            "name":"Alukas035"
+        }
+    ],
+
+    "sections":[
+        {
+            "title":"概要",
+            "content":"於2021年正式誕生。"
+        }
+    ]
+}
